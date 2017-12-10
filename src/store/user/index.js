@@ -9,9 +9,13 @@ export default ({
   getters: {
     isLogin (state) {
       if (!state.isLogin) {
-        return false
+        let token = storage.getItem('token')
+        if (typeof (token) !== 'undefined' && token != null && token !== '') {
+          state.token = token
+          state.isLogin = true
+        }
       }
-      return true
+      return state.isLogin
     }
   },
   mutations: {

@@ -1,28 +1,39 @@
 <template>
   <div id="app">
-    <div>{{islogin}}</div>
     <img src="./assets/logo.png">
     <router-link to="/">index</router-link>
     <router-link to="/main">main</router-link>
-    <button @click="login">login</button>
-    <button @click="logout">logout</button>
+    <button @click="login" v-if="!islogin">login</button>
+    <button @click="logout" v-if="islogin">logout</button>
     <router-view/>
     
   </div>
 </template>
 
 <script>
+
+import {mapGetters, mapMutations, mapActions} from 'vuex'
+
 export default {
   name: 'app',
   computed: {
-    islogin () {
-      return this.$store.getters.isLogin
-    }
+    ...mapGetters([
+      'isLogin'
+    ]),
+    ...mapGetters({
+      islogin: 'isLogin'
+    })
   },
   methods: {
-    login () {
-      this.$store.dispatch('loadUser')
-    },
+    ...mapMutations([
+      'logout1'
+    ]),
+    ...mapMutations({
+      out: 'logout' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+    }),
+    ...mapActions({
+      login: 'loadUser'
+    }),
     logout () {
       this.$store.commit('logout')
       this.$router.push('/login')
