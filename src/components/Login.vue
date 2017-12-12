@@ -1,19 +1,22 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{rePath}}</h1>
     <h2>Essential Links</h2>
-  
+
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  data
-
-  () {
+  data () {
     return {
       msg: 'Login'
+    }
+  },
+  computed: {
+    rePath () {
+      return this.$route.query.redirct
     }
   }
 }

@@ -32,7 +32,7 @@ router.beforeEach((to, from, next) => {
     if (!router.app.$options.store.state.user.isLogin) {
       router.app.$options.store.commit('loadLocalUser')
       if (!router.app.$options.store.state.user.isLogin) {
-        next({ path: '/login' })
+        next({ path: '/login?redirct=' + to.path })
         return
       }
     }
