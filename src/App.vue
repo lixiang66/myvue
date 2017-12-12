@@ -32,8 +32,13 @@ export default {
       out: 'logout' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
     }),
     ...mapActions({
-      login: 'loadUser'
+      loginx: 'loadUser'
     }),
+    login () {
+      this.$store.dispatch('loadUser').then(() => {
+        this.$router.back()
+      })
+    },
     logout () {
       this.$store.commit('logout')
       this.$router.push('/login')

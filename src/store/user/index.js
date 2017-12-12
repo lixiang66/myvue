@@ -40,8 +40,11 @@ export default ({
   },
   actions: {
     loadUser ({state, commit, dispatch}, param) {
-      commit('loginSuccess', {
-        token: '12121'
+      return new Promise((resolve, reject) => {
+        commit('loginSuccess', {
+          token: '12121'
+        })
+        resolve()
       })
     }
   }
