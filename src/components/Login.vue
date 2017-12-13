@@ -2,11 +2,13 @@
   <div class="hello">
     <h1>{{rePath}}</h1>
     <h2>Essential Links</h2>
-
+<button @click="login" v-if="!islogin">login</button>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -17,6 +19,16 @@ export default {
   computed: {
     rePath () {
       return this.$route.query.redirct
+    },
+    ...mapGetters({
+      islogin: 'isLogin'
+    })
+  },
+  methods: {
+    login () {
+      this.$store.dispatch('loadUser').then(() => {
+        this.$router.back()
+      })
     }
   }
 }

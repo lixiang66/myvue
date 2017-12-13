@@ -3,8 +3,7 @@
     <img src="./assets/logo.png">
     <router-link to="/">index</router-link>
     <router-link to="/main">main</router-link>
-    <button @click="login" v-if="!islogin">login</button>
-    <button @click="logout" v-if="islogin">logout</button>
+    <button @click="logout" v-if="isLogin">logout</button>
     <router-view/>
     
   </div>
@@ -17,12 +16,12 @@ import {mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
   name: 'app',
   computed: {
-    ...mapGetters([
-      'isLogin'
-    ]),
     ...mapGetters({
       islogin: 'isLogin'
-    })
+    }),
+    ...mapGetters([
+      'isLogin'
+    ])
   },
   methods: {
     ...mapMutations([
