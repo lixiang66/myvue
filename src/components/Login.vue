@@ -1,8 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{rePath}}</h1>
+    <h1>{{msg}}</h1>
     <h2>Essential Links</h2>
 <button @click="login" v-if="!islogin">login</button>
+<button @click="login1" v-if="!islogin">login</button>
   </div>
 </template>
 
@@ -10,7 +12,7 @@
 import {mapGetters} from 'vuex'
 
 export default {
-  name: 'HelloWorld',
+  name: 'xxx',
   data () {
     return {
       msg: 'Login'
@@ -27,8 +29,11 @@ export default {
   methods: {
     login () {
       this.$store.dispatch('loadUser').then(() => {
-        this.$router.back()
+        this.$router.push(this.$route.query.redirct)
       })
+    },
+    login1 () {
+      this.msg = '1212122'
     }
   }
 }

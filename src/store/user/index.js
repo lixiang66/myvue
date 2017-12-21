@@ -16,6 +16,9 @@ export default ({
         }
       }
       return state.isLogin
+    },
+    getURLData (state) {
+      return state.name
     }
   },
   mutations: {
@@ -29,6 +32,9 @@ export default ({
     logout (state) {
       storage.removeItem('token')
       state.isLogin = false
+    },
+    setURL (state, data) {
+      state.name = data
     },
     loadLocalUser (state) {
       let token = storage.getItem('token')

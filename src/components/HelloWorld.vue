@@ -17,17 +17,54 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+
+    <Button type="primary" @click.native="record">record</Button>
+    <Button type="primary" @click.native="stop">stop</Button>
+    <Button type="primary" @click.native="play">play</Button>
+     <Button type="primary" @click.native="getData">getData</Button>
+     <video :src="getURLData" controls="controls"></video>
   </div>
 </template>
 
 <script>
+import recoder from '../lib/recorder'
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'HelloWorld',
-  data
-
-  () {
+  data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      data: 'a'
+    }
+  },
+  computed: {
+    mydata () {
+      return this.data
+    },
+    ...mapGetters({
+      getURLData: 'getURLData'
+    })
+  },
+  methods: {
+    record () {
+      console.log(recoder)
+
+      recoder.record()
+    },
+    stop () {
+      this.msg = 'jkjkjk'
+      recoder.stop()
+    },
+    play () {
+      recoder.play()
+    },
+    getData () {
+      recoder.getData((data) => {
+        let data1 = window.URL.createObjectURL(data)
+        this.$store.commit('setURL', data1)
+        console.log(this.data)
+      })
     }
   }
 }
