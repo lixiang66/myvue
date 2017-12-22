@@ -1,46 +1,58 @@
 <template>
-  <div>
-
-  </div>
+  <Menu mode="horizontal" active-name="1">
+    <div class="layout-logo">无锡交警</div>
+    <div class="layout-nav">
+      <a @click="">注销</a>
+    </div>
+  </Menu>
 </template>
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'Header',
     data () {
       return {
-        recorder: null,
-        msg: 'Welcome to Your Vue.js App',
-        data: 'a'
+        msg: 'Welcome to Your Vue.js App'
       }
     },
-    computed: {
-
-    },
+    computed: {},
     methods: {
+      logout () {
 
+      }
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1, h2 {
-    font-weight: normal;
+<style type="scss" scoped>
+  .layout-logo {
+    width: 100px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 200;
+    color: gray;
+    height: 30px;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 20px;
+  }
+
+  .layout-nav {
+    position: absolute;
+    right: 40px;
 
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
+  .layout-nav a {
+    font-size: 14px;
+    color: gray;
   }
 
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
+  .layout-nav a:hover {
+    box-shadow: 0px 1px gray;
   }
 </style>

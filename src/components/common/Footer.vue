@@ -1,46 +1,29 @@
 <template>
-  <div>
-
+  <div class="layout-copy">
+    {{copy}}
   </div>
 </template>
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'Footer',
     data () {
       return {
-        recorder: null,
-        msg: 'Welcome to Your Vue.js App',
-        data: 'a'
+        copy: '公安部交通管理科学研究所 1989-2017'
       }
     },
-    computed: {
-
-    },
-    methods: {
-
-    }
+    computed: {},
+    methods: {}
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
-
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
+  .layout-copy {
+    text-align: center;
+    padding: 10px 0 20px;
+    color: #9ea7b4;
+    background-color: #FFF;
+    height: 30px;
   }
 </style>

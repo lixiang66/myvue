@@ -37,7 +37,6 @@ var RecorderFlash = function (options) {
 }
 
 RecorderFlash.prototype.initialize = function (cfg) {
-  // global handler for Flash
   window['flashRecorder'] = this
   this._events = []
   this._initialized = false
@@ -52,7 +51,7 @@ RecorderFlash.prototype.initialize = function (cfg) {
   this.bind('mp3Data', this._onDataReady)
   this.bind('ended', this._onEnded)
   this.bind('microphoneMuted', this._showFlash)
-  this.bind('record', this._hideFlash)
+  this.bind('record', this._started)
 }
 
 RecorderFlash.prototype._setupFlashContainer = function () {
@@ -69,6 +68,10 @@ RecorderFlash.prototype._checkForFlashBlock = function () {
       this._showFlash()
     }
   }, this), 500)
+}
+RecorderFlash.prototype._started = function () {
+  this._hideFlash()
+  console.log(12222)
 }
 
 RecorderFlash.prototype._onInitialized = function (e) {
@@ -127,6 +130,10 @@ RecorderFlash.prototype.play = function () {
 
 RecorderFlash.prototype.stop = function () {
   return this.flashInterface().recordStop()
+}
+
+RecorderFlash.prototype.pause = function () {
+  return this.flashInterface().record()
 }
 
 RecorderFlash.prototype.getData = function (callback) {

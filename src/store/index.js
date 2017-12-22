@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import user from './user'
+import scene from './scene'
 
 Vue.use(Vuex)
 
@@ -10,7 +10,7 @@ const store = new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
-    user: user
+    scene: scene
   }
 })
 
