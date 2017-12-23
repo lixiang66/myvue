@@ -8,7 +8,7 @@ import 'iview/dist/styles/iview.css'
 Vue.use(iView, {locale})
 Vue.config.productionTip = false
 
-var dd = new Vue({
+let vm = new Vue({
   el: '#app',
   router,
   store,
@@ -16,4 +16,6 @@ var dd = new Vue({
   components: {App}
 })
 
-exports = dd
+Vue.use({
+  vm
+})

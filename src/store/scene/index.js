@@ -51,19 +51,19 @@ export default ({
     [TYPEINGS.LOADLOCALUSER] (state) {
       let data = JSON.parse(storage.getItem('state'))
       if (typeof data !== 'undefined' && data !== null && data.auth.isLogin) {
-        state = data
+        // state.auth.isLogin = data.auth.isLogin
+        Object.assign(state, data)
       }
     },
     [TYPEINGS.LOGINSUCCESS] (state, auth) {
       if (auth.isLogin) {
         state.auth.isLogin = auth.isLogin
-        state.isLogin = true
         storage.setItem('state', JSON.stringify(state))
       }
     },
     [TYPEINGS.LOGOUT] (state) {
-      storage.removeItem('token')
-      state.isLogin = false
+      storage.removeItem('state')
+      state.auth.isLogin = false
     },
     [TYPEINGS.AUDIODATA] (state, data) {
       state.audioData = data

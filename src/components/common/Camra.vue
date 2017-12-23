@@ -20,14 +20,7 @@
     mounted: function () {
       let videoObj = {video: true}
       let video = this.$refs.cam
-      if (navigator.getUserMedia) {
-        navigator.getUserMedia(videoObj, function (stream) {
-          video.src = stream
-          video.play()
-        }, function (error) {
-          console.log('Video capture error:', error.code)
-        })
-      } else if (navigator.webkitGetUserMedia) {
+      if (navigator.webkitGetUserMedia) {
         navigator.webkitGetUserMedia(videoObj, function (stream) {
           video.src = window.webkitURL.createObjectURL(stream)
           video.play()

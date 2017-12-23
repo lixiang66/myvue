@@ -1,6 +1,12 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div>
+    <Menu mode="horizontal" active-name="1">
+        <div class="layout-assistant">
+            <MenuItem name="1">Option1</MenuItem>
+            <MenuItem name="2">Option1</MenuItem>
+            <MenuItem name="3">Option2</MenuItem>
+        </div>
+    </Menu>
   </div>
 </template>
 

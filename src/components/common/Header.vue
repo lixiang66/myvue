@@ -2,26 +2,29 @@
   <Menu mode="horizontal" active-name="1">
     <div class="layout-logo">无锡交警</div>
     <div class="layout-nav">
-      <a @click="">注销</a>
+      <a @click="logout">注销</a>
     </div>
   </Menu>
 </template>
 
 <script>
-  export default {
-    name: 'Header',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
-    },
-    computed: {},
-    methods: {
-      logout () {
+import TYPINGS from '../../store/typings'
 
-      }
+export default {
+  name: 'Header',
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  computed: {},
+  methods: {
+    logout () {
+      this.$store.commit(TYPINGS.LOGOUT)
+      this.$router.push('/')
     }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
