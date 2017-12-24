@@ -1,6 +1,6 @@
 <template>
   <Menu mode="horizontal" active-name="1">
-    <div class="layout-logo">无锡交警</div>
+    <div class="layout-logo">.....</div>
     <div class="layout-nav">
       <a @click="logout">注销</a>
     </div>

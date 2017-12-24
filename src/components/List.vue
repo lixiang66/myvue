@@ -3,7 +3,12 @@
     <div>
       <Card dis-hover style="width:100%;border-top:none;border-left:none;border-right:none;">
         <div style="text-align:center">
-            <h3>{{menuTitle}}</h3>
+            <h3>{{menuTitle}}
+              <div style="float:right;display:inline;padding:0 20px;">
+              <a href="#"><Icon type="plus-circled"></Icon>添加</a>
+              </div>
+            </h3>
+            
         </div>
       </Card>
     </div>

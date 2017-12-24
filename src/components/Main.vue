@@ -2,13 +2,11 @@
   <div>
     <Row>
     <Col span="24">
-      <Menu mode="horizontal" :active-name="currentPage" @on-select="goPage">
-        <div class="layout-nav">
-        <MenuItem v-for="m in menus" :key="m.jylx" :name="m.jylx" :id="m.jylx">
-        {{m.title}}
-        </MenuItem>
-        </div>
-      </Menu>
+        <Menu mode="horizontal" :active-name="currentPage" @on-select="goPage">
+          <MenuItem v-for="m in menus" :key="m.jylx" :name="m.jylx" :id="m.jylx">
+          {{m.title}}
+          </MenuItem>
+        </Menu>
     </Col>
   </Row>
   <div style="margin-top:10px;">
@@ -56,25 +54,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.ivu-menu-horizontal{
-  height: auto;
-  min-height: 60px;
-}
-.ivu-menu-horizontal .ivu-menu-item, .ivu-menu-horizontal .ivu-menu-submenu{
-  float: none;
+.ivu-menu-horizontal .ivu-menu-item, .ivu-menu-horizontal .ivu-menu-submenu {
+    padding: 0 10px;
 }
 </style>
