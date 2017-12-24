@@ -45,7 +45,7 @@
           if (data.code === 200) {
             let path = this.$route.query.redirct
             if (typeof path === 'undefined' || path === null || path === '') {
-              path = '/main'
+              path = '/main/list/1001'
             }
             this.$router.push(path)
           }

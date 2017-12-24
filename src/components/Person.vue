@@ -1,33 +1,20 @@
 <template>
-  <div>
-    <Row>
-    <Col span="24">
-      <Menu mode="horizontal" :active-name="currentPage" @on-select="goPage">
-        <div class="layout-nav">
-        <MenuItem v-for="m in menus" :key="m.jylx" :name="m.jylx" :id="m.jylx">
-        {{m.title}}
-        </MenuItem>
+  <div style="padding-right:10px;padding-left:10px;text-align:center;">
+    <Card>
+        <p slot="title">个人信息</p>
+        <Camra width="100%" name="personinfo"></Camra>
+        <Button long type="primary">点名</Button>
+        <div>
+
         </div>
-      </Menu>
-    </Col>
-  </Row>
-  <div style="margin-top:10px;">
-    <Row>
-    <Col span="5">
-      <Person></Person>
-    </Col>
-    <Col span="19">
-      <router-view/>
-    </Col>
-  </Row>
-  </div>
+    </Card>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import TYPINGS from '../store/typings'
-import Person from './Person'
+import Camra from './common/Camra'
 
 export default {
   name: 'Main',
@@ -43,11 +30,11 @@ export default {
     })
   },
   components: {
-    Person
+    Camra
   },
   methods: {
     goPage (name) {
-      this.$store.commit(TYPINGS.CHANGECURRENTPAGE, {'name': name})
+      this.$store.commit(TYPINGS.CHANGECURRENTPAGE, {'name': name, 'pageNo': 1, kjlist: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']})
       this.$router.push('/main/list/' + name)
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="layout">
     <Header></Header>
-    <div style="min-height: 600px;width: 100%;">
+    <div style="min-height:600px;width: 100%;min-width:1100px;" ref="mainLayout">
       <router-view/>
     </div>
     <Footer></Footer>
@@ -54,7 +54,12 @@
 
       }
     },
-    components: {Header, Footer}
+    components: {Header, Footer},
+    mounted () {
+      let layout = this.$refs.mainLayout
+      let height = window.innerHeight - 94
+      layout.style['min-height'] = height + 'px'
+    }
   }
 </script>
 

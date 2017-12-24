@@ -5,6 +5,11 @@ export default {
   LOGOUT: 'logout',
   AUDIODATA: 'setAudioData',
   DMXX: 'setDmxx',
+  CHANGECURRENTPAGE: 'changeCurrentPage',
+  PUSHKJLIST: 'pushKjList',
   // actions
-  LOGIN: 'userLogin'
+  LOGIN: 'userLogin',
+  LOADMOREKJ: 'loadMoreKj',
+  INITKJLIST: 'initKjList',
+  LOADKJDETAIL: 'loadKjDetail'
 }

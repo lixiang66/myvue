@@ -1,7 +1,7 @@
 <template>
   <div>
-    <video :width="width?width:320" :height="height?height:240" ref="cam" style="border-radius: 4px;box-shadow: 2px 2px 2px #CCC;"></video>
-    <canvas :width="width?width:320" :height="height?height:240" ref="canv" style="display: none"></canvas>
+    <video :width="width?width:320" :height="240" ref="cam" style="border-radius: 4px;box-shadow: 2px 2px 2px #CCC;"></video>
+    <canvas :width="width?width:320" :height="240" ref="canv" style="display: none"></canvas>
   </div>
 </template>
 
@@ -9,17 +9,23 @@
   export default {
     name: 'Camra',
     props: [
-      'width',
-      'height'
+      'width'
     ],
     data () {
-      return {}
+      return {
+        stream: null
+      }
     },
-    computed: {},
+    computed: {
+      height () {
+        return this.width ? this.width * 0.75 : 240
+      }
+    },
     methods: {},
-    mounted: function () {
+    mounted () {
       let videoObj = {video: true}
       let video = this.$refs.cam
+      let canvas = this.$refs.canv
       if (navigator.webkitGetUserMedia) {
         navigator.webkitGetUserMedia(videoObj, function (stream) {
           video.src = window.webkitURL.createObjectURL(stream)
@@ -34,6 +40,25 @@
         }, function (error) {
           console.log('Video capture error:', error.code)
         })
+      } else if (navigator.getUserMedia) { // Standard
+        navigator.getUserMedia(videoObj, function (stream) {
+          video.src = stream
+          video.play()
+        }, function (error) {
+          console.log('Video capture error:', error.code)
+        })
+      }
+      console.log(video.getClientRects())
+      video.height = video.getClientRects()[0].width * 0.75
+      canvas.height = video.getClientRects()[0].width * 0.75
+      window.onresize = () => {
+        video.height = video.getClientRects()[0].width * 0.75
+        canvas.height = video.getClientRects()[0].width * 0.75
+      }
+    },
+    beforeDestroy () {
+      if (this.stream !== null && typeof this.stream !== 'undefined') {
+        this.stream.stop()
       }
     }
   }
