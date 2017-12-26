@@ -1,6 +1,6 @@
 <template>
   <Row>
-    <i-col span="8" offset="8">
+    <Col span="8" offset="8">
       <Card style="margin: 70px 0;min-width: 380px;text-align: center;padding: 15px; ">
         <div slot="title" style="font-size: 20px;color: #ddd;">用户登录</div>
         <div style="padding-bottom: 10px;">
@@ -9,7 +9,7 @@
         <Input v-model="sfzmhm" placeholder="请输入身份证明号码" style="padding-bottom: 10px;width: 320px;"></Input>
         <Button type="primary" style="width: 320px;" @click="takePhoto">登录</Button>
       </Card>
-    </i-col>
+    </Col>
   </Row>
 </template>
 

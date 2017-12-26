@@ -13,7 +13,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import TYPINGS from '../store/typings'
 import Camra from './common/Camra'
 
 export default {
@@ -33,10 +32,7 @@ export default {
     Camra
   },
   methods: {
-    goPage (name) {
-      this.$store.commit(TYPINGS.CHANGECURRENTPAGE, {'name': name, 'pageNo': 1, kjlist: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']})
-      this.$router.push('/main/list/' + name)
-    }
+
   }
 }
 </script>

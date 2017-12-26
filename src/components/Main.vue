@@ -24,7 +24,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import TYPINGS from '../store/typings'
 import Person from './Person'
 
 export default {
@@ -45,7 +44,6 @@ export default {
   },
   methods: {
     goPage (name) {
-      this.$store.commit(TYPINGS.CHANGECURRENTPAGE, {'name': name})
       this.$router.push('/main/list/' + name)
     }
   }

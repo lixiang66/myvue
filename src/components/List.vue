@@ -15,7 +15,7 @@
     <div style="display:block;">
       <Card v-for=" x in getKjList" :key="x" :kjxh="x" @click.native="toDetailPage" style="width:17%;padding:5px;margin-left:2%;margin-top:2%;height:inherit;line-height: inherit;float:left;">
           <div style="text-align:center">
-              <img src="/static/logo.png" width="100%">
+              <img src="../assets/logo.png" width="100%">
               <h3>交通法律法规</h3>
           </div>
       </Card>
@@ -67,9 +67,27 @@
         })
       }
     },
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+        vm.$store.commit(TYPINGS.CHANGECURRENTPAGE, {'name': to.params.jylx, 'pageNo': 1, 'kjlist': []})
+        vm.$store.dispatch(TYPINGS.INITKJLIST, {jylx: to.params.jylx}).then((data) => {
+        })
+      })
+    },
+    beforeRouteUpdate (to, from, next) {
+      this.$store.commit(TYPINGS.CHANGECURRENTPAGE, {'name': to.params.jylx, 'pageNo': 1, 'kjlist': []})
+      this.$store.dispatch(TYPINGS.INITKJLIST, {jylx: to.params.jylx}).then((data) => {
+        if (to.params.jylx === '1009') {
+          setTimeout(() => {
+            next()
+          }, 4000)
+        } else {
+          next()
+        }
+      })
+    },
     created () {
-      this.$store.commit(TYPINGS.CHANGECURRENTPAGE, {'pageNo': 1, kjlist: []})
-      this.$store.dispatch(TYPINGS.INITKJLIST, {jylx: this.jylx})
+      console.log(2)
     }
   }
 </script>

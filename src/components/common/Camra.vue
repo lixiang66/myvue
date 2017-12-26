@@ -48,7 +48,6 @@
           console.log('Video capture error:', error.code)
         })
       }
-      console.log(video.getClientRects())
       video.height = video.getClientRects()[0].width * 0.75
       canvas.height = video.getClientRects()[0].width * 0.75
       window.onresize = () => {

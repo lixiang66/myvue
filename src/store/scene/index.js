@@ -49,7 +49,6 @@ export default ({
       return state.menu
     },
     getCurrentPage (state) {
-      console.log(122)
       return state.user.currentPage.name
     },
     getKjList (state) {
