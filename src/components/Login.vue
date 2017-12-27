@@ -58,7 +58,7 @@
     beforeCreate: function () {
       this.$store.commit(TYPINGS.LOADLOCALUSER)
       if (this.$store.state.scene.auth.isLogin) {
-        this.$router.push('/main')
+        this.$router.push('/main/list/1001')
       }
     },
     mounted: function () {
